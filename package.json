@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --open",
-    "build": "webpack"
+    "build": "webpack",
+    "production": "webpack --mode production"
   },
   "author": "Wendy",
   "license": "ISC",
@@ -14,6 +15,7 @@
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.4",
+    "clean-webpack-plugin": "^1.0.0",
     "css-loader": "^1.0.1",
     "file-loader": "^2.0.0",
     "style-loader": "^0.23.1",
