@@ -2,13 +2,26 @@ const path = require('path');
 
 module.exports = {
   mode: "development",
-  entry: './src/index.js',
-  devtool: 'inline-source-map',
+  entry: __dirname+'/src/index.js',
   devServer: {
     port:8060,
   },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        include: [
+          path.resolve(__dirname, 'src')
+        ],
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-react']
+        }
+      }
+    ]
+  },
   output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    filename:'test.js',
+    path:path.resolve(__dirname,'public')
   }
 };
