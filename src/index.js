@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import test from './img/test.jpg';
+import test from './assets/img/test.jpg';
 
 class App extends Component{
   state = {

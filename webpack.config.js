@@ -1,5 +1,6 @@
 const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpckPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: "development",
@@ -33,7 +34,10 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(['public'])
+    new CleanWebpackPlugin(['public']),
+    new HtmlWebpckPlugin({
+      template: __dirname+"/src/templates/index.html",
+    })
   ],
   output: {
     filename:'test.js',
