@@ -1,6 +1,3 @@
-.flower{
-  width: 400px;
-}
-.flower-rotate{
-  transform: rotate(30deg);
+html, body, :global(#root) {
+  height: 100%;
 }

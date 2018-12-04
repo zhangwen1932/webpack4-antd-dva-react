@@ -11,7 +11,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         include: [
           path.resolve(__dirname, 'src'),
         ],
@@ -42,5 +42,8 @@ module.exports = {
   output: {
     filename: 'test.js',
     path: path.resolve(__dirname, 'public'),
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
 };
