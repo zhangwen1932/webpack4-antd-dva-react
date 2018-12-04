@@ -3,30 +3,33 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import test from './assets/img/test.jpg';
 
-class App extends Component{
-  state = {
-    reset:'yes'
+class App extends Component {
+  state ={
+    reset: 'yes',
   }
-  onClick =() => {
+
+  onClick = () => {
+    const temp = this.state.reset === 'yes' ? 'no' : 'yes';
     this.setState({
-      reset:this.state.reset==='yes'?'no':'yes'
-    })
+      reset: temp,
+    });
   }
-  render(){
-    return(
+  
+  render() {
+    return (
       <div>
-        <img 
-        src={test} 
-        alt='flower' 
-        className={this.state.reset === 'yes'? 'flower' : 'flower flower-rotate'}
-        onClick={this.onClick}
+        <img
+          src={test}
+          alt="flower"
+          className={this.state.reset === 'yes' ? 'flower' : 'flower flower-rotate'}
+          onClick={this.onClick}
         />
       </div>
-    )
+    );
   }
 }
 
 ReactDOM.render(
-  <App/>,
-  document.getElementById('root')
-)
+  <App />,
+  document.getElementById('root'),
+);
