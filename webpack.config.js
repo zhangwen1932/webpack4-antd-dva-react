@@ -3,44 +3,44 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpckPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: "development",
-  entry: __dirname+'/src/index.js',
+  mode: 'development',
+  entry: path.resolve(__dirname, '/src/index.js'),
   devServer: {
-    port:8060,
+    port: 8060,
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         include: [
-          path.resolve(__dirname, 'src')
+          path.resolve(__dirname, 'src'),
         ],
         loader: 'babel-loader',
-      },{
-        test:/\.css$/,
+      }, {
+        test: /\.css$/,
         use: [
-          { loader:'style-loader'},
-          { loader:'css-loader'}
-        ]
-      },{
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+        ],
+      }, {
         test: /\.(png|jpg|gif)$/,
         use: [
           {
             loader: 'file-loader',
-            options: {}
-          }
-        ]
-      }
-    ]
+            options: {},
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new CleanWebpackPlugin(['public']),
     new HtmlWebpckPlugin({
-      template: __dirname+"/src/templates/index.html",
-    })
+      template: path.resolve(__dirname, '/src/templates/index.html'),
+    }),
   ],
   output: {
-    filename:'test.js',
-    path:path.resolve(__dirname,'public')
-  }
+    filename: 'test.js',
+    path: path.resolve(__dirname, 'public'),
+  },
 };
