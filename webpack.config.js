@@ -4,7 +4,7 @@ const HtmlWebpckPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: path.resolve(__dirname, '/src/index.js'),
+  entry: path.resolve(__dirname, 'src/index.js'),
   devServer: {
     port: 8060,
   },
@@ -36,7 +36,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['public']),
     new HtmlWebpckPlugin({
-      template: path.resolve(__dirname, '/src/templates/index.html'),
+      template: path.resolve(__dirname, 'src/templates/index.html'),
     }),
   ],
   output: {
