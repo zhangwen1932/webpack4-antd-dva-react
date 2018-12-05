@@ -2,18 +2,29 @@ const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpckPlugin = require('html-webpack-plugin');
 
+const { routers } = require('./routers.dev.json');
+
+
+const entry = {};
+
+routers.forEach((r) => {
+  entry[r.name] = r.entry;
+});
+
 module.exports = {
   mode: 'development',
-  entry: path.resolve(__dirname, 'src/index.js'),
+  context: path.join(__dirname, '..', 'src/'),
+  entry,
   devServer: {
     port: 8060,
+    historyApiFallback: true,
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         include: [
-          path.resolve(__dirname, 'src'),
+          path.join(__dirname, '..', 'src'),
         ],
         loader: 'babel-loader',
       }, {
@@ -36,12 +47,12 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['public']),
     new HtmlWebpckPlugin({
-      template: path.resolve(__dirname, 'src/templates/index.html'),
+      template: path.join(__dirname, '..', 'src/templates/index.html'),
     }),
   ],
   output: {
     filename: 'test.js',
-    path: path.resolve(__dirname, 'public'),
+    path: path.join(__dirname, '..', 'public'),
   },
   resolve: {
     extensions: ['.js', '.jsx'],
