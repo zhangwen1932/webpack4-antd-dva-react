@@ -4,7 +4,7 @@ const HtmlWebpckPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: path.join(__dirname, '..', 'src/index.js'),
   devServer: {
     port: 8060,
   },
@@ -13,7 +13,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         include: [
-          path.resolve(__dirname, 'src'),
+          path.join(__dirname, '..', 'src'),
         ],
         loader: 'babel-loader',
       }, {
@@ -36,12 +36,12 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['public']),
     new HtmlWebpckPlugin({
-      template: path.resolve(__dirname, 'src/templates/index.html'),
+      template: path.join(__dirname, '..', 'src/templates/index.html'),
     }),
   ],
   output: {
     filename: 'test.js',
-    path: path.resolve(__dirname, 'public'),
+    path: path.join(__dirname, '..', 'public'),
   },
   resolve: {
     extensions: ['.js', '.jsx'],
