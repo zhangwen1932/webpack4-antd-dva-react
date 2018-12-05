@@ -2,7 +2,7 @@
   "index": "index.html",
   "routers": [{
     "name": "demo",
-    "entry": "./index",
+    "entry": "./entries/index",
     "template": "templates/index.html", 
     "filename": "test.html"
   }]
