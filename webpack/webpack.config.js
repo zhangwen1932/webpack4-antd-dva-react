@@ -2,11 +2,22 @@ const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpckPlugin = require('html-webpack-plugin');
 
+const { routers } = require('./routers.dev.json');
+
+
+const entry = {};
+
+routers.forEach((r) => {
+  entry[r.name] = r.entry;
+});
+
 module.exports = {
   mode: 'development',
-  entry: path.join(__dirname, '..', 'src/index.js'),
+  context: path.join(__dirname, '..', 'src/'),
+  entry,
   devServer: {
     port: 8060,
+    historyApiFallback: true,
   },
   module: {
     rules: [
