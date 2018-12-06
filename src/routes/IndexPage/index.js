@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { Button } from 'antd';
 
-import './IndexPage.css';
+import './style.css';
 
 function IndexPage() {
   return (
