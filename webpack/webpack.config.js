@@ -1,15 +1,17 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpckPlugin = require('html-webpack-plugin');
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { routers } = require('./routers.dev.json');
 
-
 const entry = {};
-
 routers.forEach((r) => {
   entry[r.name] = r.entry;
 });
+const plugins = routers.map(r => new HtmlWebpackPlugin({
+  template: r.template,
+  filename: r.filename,
+  chunks: [r.name],
+}));
 
 module.exports = {
   mode: 'development',
@@ -21,10 +23,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(['public']),
-    new HtmlWebpckPlugin({
-      template: path.join('templates/index.html'),
-    }),
-  ],
+  ].concat(plugins),
   module: {
     rules: [
       {
@@ -65,7 +64,7 @@ module.exports = {
     ],
   },
   output: {
-    filename: 'test.js',
+    filename: '[name].bundle.js',
     path: path.join(__dirname, '..', 'public'),
   },
   resolve: {
