@@ -19,6 +19,12 @@ module.exports = {
     port: 8060,
     historyApiFallback: true,
   },
+  plugins: [
+    new CleanWebpackPlugin(['public']),
+    new HtmlWebpckPlugin({
+      template: path.join('templates/index.html'),
+    }),
+  ],
   module: {
     rules: [
       {
@@ -58,12 +64,6 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new CleanWebpackPlugin(['public']),
-    new HtmlWebpckPlugin({
-      template: path.join(__dirname, '..', 'src/templates/index.html'),
-    }),
-  ],
   output: {
     filename: 'test.js',
     path: path.join(__dirname, '..', 'public'),
