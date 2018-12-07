@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server --color --config webpack/webpack.config.js --open",
     "build": "webpack",
-    "production": "webpack --mode production"
+    "production": "webpack --mode production --config webpack/webpack.config.js"
   },
   "author": "Wendy",
   "license": "ISC",

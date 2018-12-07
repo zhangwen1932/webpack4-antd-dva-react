@@ -1,30 +1,39 @@
 const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpckPlugin = require('html-webpack-plugin');
+// const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const { routers } = require('./routers.dev.json');
+const { routersTest } = require('./routersTest.dev.json');
 
-
+const entryTest = {};
+routersTest.forEach((r) => {
+  entryTest[r.name] = r.entry;
+});
+console.log('entryTest', entryTest);
+const plugins = routersTest.map(r => new HtmlWebpackPlugin({
+  template: r.template,
+  filename: r.filename,
+  chunks: [r.name],
+}));
+console.log('plugins', plugins);
 const entry = {};
 
 routers.forEach((r) => {
   entry[r.name] = r.entry;
 });
+console.log('entry', entry);
 
 module.exports = {
   mode: 'development',
   context: path.join(__dirname, '..', 'src/'),
-  entry,
+  entry: entryTest,
   devServer: {
     port: 8060,
     historyApiFallback: true,
   },
   plugins: [
-    new CleanWebpackPlugin(['public']),
-    new HtmlWebpckPlugin({
-      template: path.join('templates/index.html'),
-    }),
-  ],
+    // new CleanWebpackPlugin(['public']),
+  ].concat(plugins),
   module: {
     rules: [
       {
@@ -65,7 +74,7 @@ module.exports = {
     ],
   },
   output: {
-    filename: 'test.js',
+    filename: '[name].bundle.js',
     path: path.join(__dirname, '..', 'public'),
   },
   resolve: {
