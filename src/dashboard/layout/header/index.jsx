@@ -24,8 +24,8 @@ class Header extends Component {
           selectedKeys={current}
           mode="horizontal"
         >
-          <Menu.Item key="products">导航一</Menu.Item>
-          <Menu.Item key="example">导航二</Menu.Item>
+          <Menu.Item key="Index">Indexpage</Menu.Item>
+          <Menu.Item key="products">products</Menu.Item>
         </Menu>
       </header>
     );
