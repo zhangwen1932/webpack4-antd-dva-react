@@ -13,10 +13,11 @@ import Header from '../header';
 
 class Main extends Component {
   render() {
+    const { children } = this.props;
     return (
       <div id="main">
         <Header />
-        <div className="main-content">{this.props.children}</div>
+        <div className="main-content">{ children }</div>
       </div>
     );
   }
