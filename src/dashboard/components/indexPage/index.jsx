@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { Button } from 'antd';
 
-import './style.css';
+import './style.scss';
 
 function IndexPage() {
   return (
@@ -20,8 +20,5 @@ function IndexPage() {
     </div>
   );
 }
-
-IndexPage.propTypes = {
-};
 
 export default connect()(IndexPage);

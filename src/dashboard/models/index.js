@@ -1,7 +1,7 @@
-import products from './products';
+import utils from './utils';
 
 const reducers = {
-  products,
+  utils,
 };
 
 export default reducers;
