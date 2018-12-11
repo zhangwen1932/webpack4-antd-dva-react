@@ -2,8 +2,8 @@ import React from 'react';
 import { Router, Route, Switch } from 'dva/router';
 
 import Main from '../dashboard/layout/main';
-import IndexPage from '../dashboard/components/IndexPage';
-import Products from '../dashboard/components/Products';
+import IndexPage from '../dashboard/components/indexPage';
+import Products from '../dashboard/components/products';
 
 function RouterConfig({ history }) {
   return (

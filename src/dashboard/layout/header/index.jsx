@@ -1,35 +1,40 @@
 import React, { Component } from 'react';
+import { connect } from 'dva';
 import { Menu } from 'antd';
 
 import './style.scss';
 
 class Header extends Component {
-  state = {
-    current: 'mail',
-  }
-
-  handleClick = (e) => {
-    console.log('click ', e);
-    this.setState({
-      current: e.key,
+  handleClick = (key) => {
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'utils/goto',
+      goto: key,
     });
   }
 
   render() {
-    const { current } = this.state;
+    const { activeRoute } = this.props;
+    console.log('activeRoute', activeRoute);
     return (
       <header>
         <Menu
           onClick={this.handleClick}
-          selectedKeys={current}
+          selectedKeys={[activeRoute.activeMenu]}
           mode="horizontal"
         >
-          <Menu.Item key="Index">Indexpage</Menu.Item>
-          <Menu.Item key="products">products</Menu.Item>
+          <Menu.Item key="/indexPage">Indexpage</Menu.Item>
+          <Menu.Item key="/products">products</Menu.Item>
         </Menu>
       </header>
     );
   }
 }
 
-export default Header;
+function mapStateToProps({ utils }) {
+  return {
+    activeRoute: utils.activeRoute,
+  };
+}
+
+export default connect(mapStateToProps)(Header);
