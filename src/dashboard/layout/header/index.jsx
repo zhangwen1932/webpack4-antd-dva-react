@@ -5,7 +5,7 @@ import { Menu } from 'antd';
 import './style.scss';
 
 class Header extends Component {
-  handleClick = (key) => {
+  handleClick = ({ key }) => {
     const { dispatch } = this.props;
     dispatch({
       type: 'utils/goto',
@@ -15,7 +15,6 @@ class Header extends Component {
 
   render() {
     const { activeRoute } = this.props;
-    console.log('activeRoute', activeRoute);
     return (
       <header>
         <Menu
@@ -23,7 +22,7 @@ class Header extends Component {
           selectedKeys={[activeRoute.activeMenu]}
           mode="horizontal"
         >
-          <Menu.Item key="/indexPage">Indexpage</Menu.Item>
+          <Menu.Item key="/">Indexpage</Menu.Item>
           <Menu.Item key="/products">products</Menu.Item>
         </Menu>
       </header>

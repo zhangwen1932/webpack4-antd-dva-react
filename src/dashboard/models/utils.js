@@ -1,11 +1,9 @@
 import { routerRedux } from 'dva/router';
 import pathToRegexp from 'path-to-regexp';
 
-const { push } = routerRedux.push;
-
 const routers = [{
-  test: '/indexPage',
-  activeMenu: '/indexPage',
+  test: '/',
+  activeMenu: '/indexpage',
   path: [{
     text: 'menu_index',
   }],
@@ -14,6 +12,7 @@ const routers = [{
   activeMenu: '/products',
   path: [{
     text: 'menu_products',
+    goto: '/products',
   }],
 }];
 
@@ -30,12 +29,9 @@ export default {
       history.listen(({ pathname }) => {
         dispatch({ type: 'updateCurrentPathName', pathname, history });
         let changeRoute = false;
-        console.log('pathname', pathname);
-        console.log('routers', routers);
         for (let i = 0; i < routers.length; i += 1) {
           const router = routers[i];
           const test = pathToRegexp(router.test).exec(pathname);
-          console.log('test', test);
           if (test) {
             dispatch({
               type: 'updateState',
@@ -51,7 +47,7 @@ export default {
           dispatch({
             type: 'updateState',
             payload: {
-              activeRoute: null,
+              acitveRoute: null,
             },
           });
         }
@@ -64,8 +60,7 @@ export default {
       history.goBack();
     },
     * goto({ goto }, { put }) {
-      console.log('goto', goto);
-      yield put(push(goto));
+      yield put(routerRedux.push(goto));
     },
   },
   reducers: {

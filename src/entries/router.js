@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, Route, Switch } from 'dva/router';
 
-import Main from '../dashboard/layout/main';
+import Main from '../dashboard/layout/main'; // 主视图
 import IndexPage from '../dashboard/components/indexPage';
 import Products from '../dashboard/components/products';
 
