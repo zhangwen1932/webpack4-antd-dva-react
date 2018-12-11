@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { routers } = require('./routers.dev.json');
@@ -20,8 +21,10 @@ module.exports = {
   devServer: {
     port: 8060,
     historyApiFallback: true,
+    hot: true,
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new CleanWebpackPlugin(['public']),
   ].concat(plugins),
   module: {

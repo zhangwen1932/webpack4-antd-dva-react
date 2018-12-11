@@ -12,7 +12,6 @@ const routers = [{
   activeMenu: '/products',
   path: [{
     text: 'menu_products',
-    goto: '/products',
   }],
 }];
 
