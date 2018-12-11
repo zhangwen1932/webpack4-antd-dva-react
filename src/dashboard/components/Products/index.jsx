@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+// import { connect } from 'dva';
 import { Table } from 'antd';
 
 
 class Products extends Component {
   render() {
-    const dataSource = [{
+    const data = [{
       key: '1',
       name: '张三',
       age: 32,
@@ -29,9 +30,15 @@ class Products extends Component {
       key: 'address',
     }];
     return (
-      <Table dataSource={dataSource} columns={columns} />
+      <Table dataSource={data} columns={columns} />
     );
   }
 }
 
+// function mapStateToProps({ products }) {
+//   return {
+//     products: products.productList,
+//   };
+// }
+// export default connect(mapStateToProps)(Products);
 export default Products;

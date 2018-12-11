@@ -7,7 +7,7 @@ import './style.scss';
 function IndexPage() {
   return (
     <div className="normal">
-      <h1 className="title">Hello world!</h1>
+      <h1 className="title">Hello world</h1>
       <div className="welcome" />
       <ul className="list">
         <li>
