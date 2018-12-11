@@ -7,7 +7,7 @@ import './style.scss';
 function IndexPage() {
   return (
     <div className="normal">
-      <h1 className="title">Yay! Welcome to dva!</h1>
+      <h1 className="title">测试热加载是否成功</h1>
       <div className="welcome" />
       <ul className="list">
         <li>
