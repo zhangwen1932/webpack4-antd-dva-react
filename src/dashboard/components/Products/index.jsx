@@ -1,21 +1,11 @@
 import React, { Component } from 'react';
-// import { connect } from 'dva';
+import { connect } from 'dva';
 import { Table } from 'antd';
 
 
 class Products extends Component {
   render() {
-    const data = [{
-      key: '1',
-      name: '张三',
-      age: 32,
-      address: '西湖区湖底公园1号',
-    }, {
-      key: '2',
-      name: '李四',
-      age: 42,
-      address: '西湖区湖底公园1号',
-    }];
+    const { products } = this.props;
     const columns = [{
       title: '姓名',
       dataIndex: 'name',
@@ -30,15 +20,15 @@ class Products extends Component {
       key: 'address',
     }];
     return (
-      <Table dataSource={data} columns={columns} />
+      <Table dataSource={products} columns={columns} />
     );
   }
 }
 
-// function mapStateToProps({ products }) {
-//   return {
-//     products: products.productList,
-//   };
-// }
-// export default connect(mapStateToProps)(Products);
-export default Products;
+function mapStateToProps({ products }) {
+  return {
+    products: products.productList,
+  };
+}
+
+export default connect(mapStateToProps)(Products);
