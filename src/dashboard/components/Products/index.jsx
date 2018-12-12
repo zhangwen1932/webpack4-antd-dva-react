@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'dva';
-import { Table } from 'antd';
+import { Table, Popconfirm, Button } from 'antd';
 
 
 class Products extends Component {
+  handleDelete = (key) => {
+    console.log(key);
+  };
+
   render() {
     const { products } = this.props;
     const columns = [{
@@ -18,6 +22,17 @@ class Products extends Component {
       title: '住址',
       dataIndex: 'address',
       key: 'address',
+    }, {
+      title: 'operation',
+      dataIndex: 'operation',
+      render: (text, record) => (
+        products.length >= 1
+          ? (
+            <Popconfirm title="Sure to delete?" onConfirm={() => this.handleDelete(record.key)}>
+              <Button type="primary">Delete</Button>
+            </Popconfirm>
+          ) : null
+      ),
     }];
     return (
       <Table dataSource={products} columns={columns} />
