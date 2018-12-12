@@ -8,11 +8,6 @@ const data = [{
   name: '李四',
   age: 42,
   address: '西湖区湖底公园1号',
-}, {
-  key: '3',
-  name: '李四',
-  age: 42,
-  address: '西湖区湖底公园1号',
 }];
 
 export default {
@@ -30,7 +25,6 @@ export default {
   effects: {
     * queryData(_, { put }) {
       const productList = data;
-      console.log('productList', productList);
       yield put({
         type: 'updateState',
         payload: {
