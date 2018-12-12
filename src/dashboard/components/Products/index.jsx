@@ -5,7 +5,13 @@ import { Table, Popconfirm, Button } from 'antd';
 
 class Products extends Component {
   handleDelete = (key) => {
-    console.log(key);
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'products/deleteProduct',
+      payload: {
+        id: key,
+      },
+    });
   };
 
   render() {
