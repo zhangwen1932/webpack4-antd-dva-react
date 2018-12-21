@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import { Menu } from 'antd';
 
 // import './style.css';
-import style from './style.css';
+import style from './header.css';
 
 
 class Header extends Component {
