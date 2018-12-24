@@ -36,23 +36,25 @@ module.exports = {
         ],
         loader: 'babel-loader',
       }, {
-        test: /\.css$/,
+        test: /\.(css|less)$/,
+        exclude: /node_modules/,
         use: [
           { loader: 'style-loader' },
           {
             loader: 'css-loader',
             options: {
               modules: true,
-              localIdentName: '[local]',
+              importLoaders: 1,
+              localIdentName: '[path][name]__[local]--[hash:base64:5]',
             },
           },
         ],
       }, {
-        test: /\.less$/,
+        test: /\.css$/,
+        include: /node_modules/,
         use: [
           { loader: 'style-loader' }, // creates style nodes from JS strings
           { loader: 'css-loader' }, // translates CSS into CommonJS
-          { loader: 'less-loader' }, // compiles Less to CSS
         ],
       }, {
         test: /\.scss$/,
