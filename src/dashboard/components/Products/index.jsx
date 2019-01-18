@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'dva';
 import { Table, Popconfirm, Button } from 'antd';
 
+import './style.scss';
 
 class Products extends Component {
   handleDelete = (key) => {
@@ -13,6 +14,8 @@ class Products extends Component {
       },
     });
   };
+
+  setClassName = (record, index) => (index === 0 ? 'test' : 'hello')
 
   render() {
     const { products } = this.props;
@@ -41,7 +44,7 @@ class Products extends Component {
       ),
     }];
     return (
-      <Table dataSource={products} columns={columns} />
+      <Table dataSource={products} columns={columns} rowClassName={this.setClassName} />
     );
   }
 }
